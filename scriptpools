@@ -1,0 +1,13 @@
+
+#!/bin/sh
+
+#Este script esta diseñado para que a partir de un nombre de pools podamos sacar una relación de instancias en cada balanceo
+
+POOL=`cat pool_inventory.txt` #En este archivo tenemos una relación de los pools que deseamos sacar una relación
+
+for ipremota in `cat inventory_file.txt`
+do
+
+        ssh root@$ipremota tmsh list ltm pool $POOL | grep  "ltm pool\| 10.*"  >> instancias.txt
+
+done
