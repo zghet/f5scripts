@@ -1,0 +1,15 @@
+
+#!bin/sh
+
+#Este archivo esta generado para realizar una validación de fuentes de hora, fuentes de power y temperatura con un formato de salida agradable
+
+for i in `inventory_file` #este archivo contiene las ips de nuestros equipos
+#for i in `cat invetory_file_test.csv` #esta linea esta desactiva, activar cuando se deseen realizar pruebas con un archivo diferente al principal
+do
+        ssh root@$i  tmsh list sys global-settings hostname | grep hostname >> out_file.txt
+        ssh root@$i  tmsh show sys clock | grep -A 3 "Clock" >> out_file.txt
+        ssh root@$i  tmsh show sys hard | grep -A 3 "Appliance Power Supply Status\|Chassis Power Supply Status" >> out_file.txt
+        echo -e '\n'
+        ssh root@$i  tmsh show sys hard | grep -A 3 "Inlet Temperature Status\|Chassis Temperature Status" >> out_file.txt
+        echo -e '\n==============================================================================================\n' >> out_file.txt
+done
