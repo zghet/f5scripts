@@ -13,7 +13,8 @@ Comparto esto con ustedes esperando que sea de la mejor ayuda para facilitar su 
 Este es el formato que se maneja actualmente con el "script_status"
 
 ==============================================================================================
-    hostname F5_cloud1.com
+   
+   hostname F5_cloud1.com
 Sys::Clock
 ----------------------------
 Mon May 24 10:29:04 CDT 2019
