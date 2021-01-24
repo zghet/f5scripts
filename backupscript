@@ -12,7 +12,7 @@ for REMOTE_BIGIP in `cat /inventory_file.csv` #Este ciclo designa a la variable 
 #for REMOTE_BIGIP in `cat /inventory_file.csv` #Esta linea es para ejecutar el backup con un archivo de prueba cuando agregamos nuevas ips al archivo y queremos validar que sea compatible
 do
         echo -e "Respaldando F5: $REMOTE_BIGIP"    #imprimimos el texto
-        name=`echo  "$IP_REMOTA" | sed 's/\./\_/g'`  #creamos la variable name para asignarle el valor que tomo del archivo hostf5 y el | reemplazara los punto$
+        name=`echo  "$REMOTE_BIGIP" | sed 's/\./\_/g'`  #creamos la variable name para asignarle el valor que tomo del archivo hostf5 y el | reemplazara los punto$
         ssh root@$IP_REMOTA tmsh save /sys ucs $REMOTE_PATH/"$name"_$TIMESTAMP.ucs > /dev/null 2>&1 #nos conectamos ssh al server y ejecutamos el comando para $
         scp root@$IP_REMOTA:$REMOTE_PATH/"$name"_$TIMESTAMP.ucs $LOCAL_PATH/  #realizamos la copia del archivo a nuestra carpeta local
         sleep 5
