@@ -13,7 +13,7 @@ for REMOTE_BIGIP in `cat /inventory_file.csv` #Este ciclo designa a la variable 
 do
         echo -e "Respaldando F5: $REMOTE_BIGIP"    #imprimimos el texto
         name=`echo  "$REMOTE_BIGIP" | sed 's/\./\_/g'`  #creamos la variable name para asignarle el valor que tomo del archivo hostf5 y el | reemplazara los punto$
-        ssh root@$IP_REMOTA tmsh save /sys ucs $REMOTE_PATH/"$name"_$TIMESTAMP.ucs > /dev/null 2>&1 #nos conectamos ssh al server y ejecutamos el comando para $
-        scp root@$IP_REMOTA:$REMOTE_PATH/"$name"_$TIMESTAMP.ucs $LOCAL_PATH/  #realizamos la copia del archivo a nuestra carpeta local
+        ssh root@$REMOTE_BIGIP tmsh save /sys ucs $REMOTE_PATH/"$name"_$TIMESTAMP.ucs > /dev/null 2>&1 #nos conectamos ssh al server y ejecutamos el comando para $
+        scp root@$REMOTE_BIGIP:$REMOTE_PATH/"$name"_$TIMESTAMP.ucs $LOCAL_PATH/  #realizamos la copia del archivo a nuestra carpeta local
         sleep 5
 done
