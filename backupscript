@@ -8,7 +8,7 @@ REMOTE_PATH="/var/local/ucs"   #Esta es la ubicación donde se encuentran todos 
 LOCAL_PATH="/localpath"  #esta es la ubicación donde se guardaran los respaldos que copiemos (se esta trabajando en crear una carpeta por ejecucion)
 
 
-for REMOTE_BIGIP in `cat /inventory_file.csv` #Este ciclo designa a la variable REMOTE_BIGIP la información que se encuentra almacenada en nuestro inventario de equipos
+for REMOTE_BIGIP in `cat inventory_file.csv` #Este ciclo designa a la variable REMOTE_BIGIP la información que se encuentra almacenada en nuestro inventario de equipos
 #for REMOTE_BIGIP in `cat /inventory_file.csv` #Esta linea es para ejecutar el backup con un archivo de prueba cuando agregamos nuevas ips al archivo y queremos validar que sea compatible
 do
         echo -e "Respaldando F5: $REMOTE_BIGIP"    #imprimimos el texto
