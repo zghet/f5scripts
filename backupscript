@@ -6,8 +6,10 @@
 TIMESTAMP=`date +%Y%m%d`  #definimos esta variable para que tome la fecha del dia corriente
 REMOTE_PATH="/var/local/ucs"   #Esta es la ubicación donde se encuentran todos los respaldos de los f5s
 LOCAL_PATH="/localpath"  #esta es la ubicación donde se guardaran los respaldos que copiemos (se esta trabajando en crear una carpeta por ejecucion)
+localtion=`pwd`
 
 
+mkdir ~/shellCourse/automatizacion/$TIMESTAMP
 for REMOTE_BIGIP in `cat inventory_file.csv` #Este ciclo designa a la variable REMOTE_BIGIP la información que se encuentra almacenada en nuestro inventario de equipos
 #for REMOTE_BIGIP in `cat /inventory_file.csv` #Esta linea es para ejecutar el backup con un archivo de prueba cuando agregamos nuevas ips al archivo y queremos validar que sea compatible
 do
